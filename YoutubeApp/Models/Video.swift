@@ -9,6 +9,7 @@ class Video: Decodable {
 
 class Item: Decodable {
     
+    var channel: Channel?
     let snippet: Snippet
     
 }

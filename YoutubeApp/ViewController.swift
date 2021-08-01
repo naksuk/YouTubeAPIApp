@@ -6,21 +6,54 @@ class ViewController: UIViewController {
     @IBOutlet weak var videoListCollectionView: UICollectionView!
     
     private let cellId = "cellId"
+    private var videoItems = [Item]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         videoListCollectionView.delegate = self
         videoListCollectionView.dataSource = self
         videoListCollectionView.register(UINib(nibName: "VideoListCell", bundle: nil), forCellWithReuseIdentifier: cellId)
-        let urlString = "https://www.googleapis.com/youtube/v3/search?q=olympic&key=AIzaSyDvOkXDe6uTUL9EHgO-QZkHMENrqfZkCdg&part=snippet"
+        fetchYoutubeSearchInfo()
+    }
+    
+    private func fetchYoutubeSearchInfo() {
         
+        let urlString = "https://www.googleapis.com/youtube/v3/search?q=olympic&key=AIzaSyDvOkXDe6uTUL9EHgO-QZkHMENrqfZkCdg&part=snippet"
         let request = AF.request(urlString)
+        
         request.responseJSON { (response) in
             do {
                 guard let data = response.data else { return }
                 let decode = JSONDecoder()
                 let video = try decode.decode(Video.self, from: data)
                 print("video: ", video.items.count)
+                self.videoItems = video.items
+                let id = self.videoItems[0].snippet.channelId
+                self.fetchyoutubeChannelInfo(id: id)
+                
+                self.videoListCollectionView.reloadData()
+                
+            } catch {
+                print("変換に失敗しました。:", error)
+            }
+        }
+    }
+    
+    private func fetchyoutubeChannelInfo(id: String) {
+        let urlString = "https://www.googleapis.com/youtube/v3/channels?key=AIzaSyDvOkXDe6uTUL9EHgO-QZkHMENrqfZkCdg&part=snippet&id=\(id)"
+        let request = AF.request(urlString)
+        
+        request.responseJSON { (response) in
+            do {
+                guard let data = response.data else { return }
+                let decode = JSONDecoder()
+                let channel = try decode.decode(Channel.self, from: data)
+                //self.videoItems = video.items
+                self.videoItems.forEach { (item) in
+                    item.channel = channel
+                }
+                self.videoListCollectionView.reloadData()
+                
             } catch {
                 print("変換に失敗しました。:", error)
             }
@@ -38,11 +71,12 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return videoItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = videoListCollectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! VideoListCell
+        cell.videoItem = videoItems[indexPath.row]
         return cell
     }
     
