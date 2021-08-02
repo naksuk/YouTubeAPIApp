@@ -17,48 +17,25 @@ class ViewController: UIViewController {
     }
     
     private func fetchYoutubeSearchInfo() {
-        
-        let urlString = "https://www.googleapis.com/youtube/v3/search?q=olympic&key=AIzaSyDvOkXDe6uTUL9EHgO-QZkHMENrqfZkCdg&part=snippet"
-        let request = AF.request(urlString)
-        
-        request.responseJSON { (response) in
-            do {
-                guard let data = response.data else { return }
-                let decode = JSONDecoder()
-                let video = try decode.decode(Video.self, from: data)
-                print("video: ", video.items.count)
-                self.videoItems = video.items
-                let id = self.videoItems[0].snippet.channelId
-                self.fetchyoutubeChannelInfo(id: id)
-                
-                self.videoListCollectionView.reloadData()
-                
-            } catch {
-                print("変換に失敗しました。:", error)
-            }
+        let params = ["q": "mario"]
+        APIRequest.shared.request(path: .search, params: params, type: Video.self) { (video) in
+            self.videoItems = video.items
+            let id = self.videoItems[0].snippet.channelId
+            self.fetchyoutubeChannelInfo(id: id)
         }
+        
     }
     
     private func fetchyoutubeChannelInfo(id: String) {
-        let urlString = "https://www.googleapis.com/youtube/v3/channels?key=AIzaSyDvOkXDe6uTUL9EHgO-QZkHMENrqfZkCdg&part=snippet&id=\(id)"
-        let request = AF.request(urlString)
-        
-        request.responseJSON { (response) in
-            do {
-                guard let data = response.data else { return }
-                let decode = JSONDecoder()
-                let channel = try decode.decode(Channel.self, from: data)
-                //self.videoItems = video.items
-                self.videoItems.forEach { (item) in
-                    item.channel = channel
-                }
-                self.videoListCollectionView.reloadData()
-                
-            } catch {
-                print("変換に失敗しました。:", error)
+        let params = [ "id": id ]
+        APIRequest.shared.request(path: .channels, params: params, type: Channel.self) { (channel) in
+            self.videoItems.forEach{ (item) in
+                item.channel = channel
             }
+            self.videoListCollectionView.reloadData()
         }
     }
+    
 
 }
 
