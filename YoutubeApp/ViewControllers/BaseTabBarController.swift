@@ -1,27 +1,35 @@
 import UIKit
 
+enum ControllerName: Int {
+    case home, search, channel, inbox, library
+}
+
 class BaseTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViewController()
+
         
+    }
+    
+    private func setupViewController() {
         viewControllers?.enumerated().forEach({ (index, viewController) in
-            switch index {
-            case 0:
-                setTabbbarInfo(viewController, selectedImageName: "good-selected", unselectedImageName: "good-unselected", title: "ホーム")
-            case 1:
-                setTabbbarInfo(viewController, selectedImageName: "good-selected", unselectedImageName: "good-unselected", title: "検索")
-            case 2:
-                setTabbbarInfo(viewController, selectedImageName: "good-selected", unselectedImageName: "good-unselected", title: "登録チャンネル")
-            case 3:
-                setTabbbarInfo(viewController, selectedImageName: "good-selected", unselectedImageName: "good-unselected", title: "受信トレイ")
-            case 4:
-                setTabbbarInfo(viewController, selectedImageName: "good-selected", unselectedImageName: "good-unselected", title: "ライブラリ")
-            default:
-                break
+            if let name = ControllerName.init(rawValue: index) {
+                switch name {
+                case .home:
+                    setTabbbarInfo(viewController, selectedImageName: "good-selected", unselectedImageName: "good-unselected", title: "ホーム")
+                case .search:
+                    setTabbbarInfo(viewController, selectedImageName: "good-selected", unselectedImageName: "good-unselected", title: "検索")
+                case .channel:
+                    setTabbbarInfo(viewController, selectedImageName: "good-selected", unselectedImageName: "good-unselected", title: "登録チャンネル")
+                case .inbox:
+                    setTabbbarInfo(viewController, selectedImageName: "good-selected", unselectedImageName: "good-unselected", title: "受信トレイ")
+                case .library:
+                    setTabbbarInfo(viewController, selectedImageName: "good-selected", unselectedImageName: "good-unselected", title: "ライブラリ")
+                }
             }
         })
-        
     }
     
     
