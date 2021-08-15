@@ -1,7 +1,7 @@
 import UIKit
 import Alamofire
 
-class ViewController: UIViewController {
+class VideoListViewController: UIViewController {
 
     @IBOutlet weak var videoListCollectionView: UICollectionView!
     @IBOutlet weak var profileImageView: UIImageView!
@@ -71,7 +71,7 @@ class ViewController: UIViewController {
 }
 
 // MARK: : -ScrollViewのDelegateメソッド
-extension ViewController {
+extension VideoListViewController {
     
     //scrollViewがscrollした時に呼ばれるメソッド
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -116,7 +116,7 @@ extension ViewController {
 }
 
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension VideoListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.view.frame.width
@@ -152,6 +152,12 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
             return cell
         }
 
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let videoViewController = UIStoryboard(name: "Video", bundle: nil).instantiateViewController(identifier: "VideoViewController") as VideoViewController
+        videoViewController.modalPresentationStyle = .fullScreen
+        self.present(videoViewController, animated: true, completion: nil)
     }
     
     

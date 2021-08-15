@@ -57,7 +57,7 @@ extension AttentionCell: UICollectionViewDelegate, UICollectionViewDataSource, U
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = attentionCollectionView.dequeueReusableCell(withReuseIdentifier: attentionId, for: indexPath) as! AttentionCollectionViewCell
-        cell.backgroundColor = .yellow
+        cell.videoItem = videoItems[indexPath.row]
         
         return cell
     }

@@ -27,10 +27,10 @@
             </objects>
             <point key="canvasLocation" x="-1454" y="-335"/>
         </scene>
-        <!--Home-->
+        <!--VideoList-->
         <scene sceneID="roz-cM-FKI">
             <objects>
-                <viewControllerPlaceholder storyboardName="Home" id="Phh-Nf-IiN" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="VideoList" id="Phh-Nf-IiN" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="elz-q7-c00"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y7A-nz-hnv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
