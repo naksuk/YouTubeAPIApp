@@ -2,7 +2,7 @@ import UIKit
 import Alamofire
 
 class VideoListViewController: UIViewController {
-
+    
     @IBOutlet weak var videoListCollectionView: UICollectionView!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var headerView: UIView!
@@ -50,7 +50,7 @@ class VideoListViewController: UIViewController {
         }
     }
     
-
+    
     
     private func headerViewEndAnimation() {
         if headerTopConstraint.constant < -headerHeightConstraint.constant / 2 {
@@ -67,7 +67,7 @@ class VideoListViewController: UIViewController {
             })
         }
     }
-
+    
 }
 
 // MARK: : -ScrollViewのDelegateメソッド
@@ -93,7 +93,7 @@ extension VideoListViewController {
         guard let presentIndexPath = videoListCollectionView.indexPathForItem(at: scrollView.contentOffset) else { return }
         if presentIndexPath.row >= videoItems.count - 2 { return }
         if scrollView.contentOffset.y < 0 { return }
-       
+        
         
         let alphaRatio = 1 / headerHeightConstraint.constant
         
@@ -108,7 +108,7 @@ extension VideoListViewController {
             headerView.alpha += alphaRatio * headerMoveHeight
         }
     }
-
+    
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         headerViewEndAnimation()
@@ -151,15 +151,17 @@ extension VideoListViewController: UICollectionViewDelegate, UICollectionViewDat
             
             return cell
         }
-
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let videoViewController = UIStoryboard(name: "Video", bundle: nil).instantiateViewController(identifier: "VideoViewController") as VideoViewController
-        videoViewController.modalPresentationStyle = .fullScreen
+        
+        videoViewController.selectedItem = indexPath.row > 2 ? videoItems[indexPath.row - 1] : videoItems[indexPath.row]
+        
         self.present(videoViewController, animated: true, completion: nil)
     }
     
     
-        
+    
 }
