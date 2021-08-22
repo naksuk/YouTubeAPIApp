@@ -4,16 +4,33 @@ import Nuke
 class VideoViewController: UIViewController {
     
     var selectedItem: Item?
+    private var imageViewCenterY: CGFloat?
+    var videoImageMaxY: CGFloat {
+        let ecloudValue = view.safeAreaInsets.bottom + (imageViewCenterY ?? 0)
+        return view.frame.maxY - ecloudValue
+    }
     
-    @IBOutlet weak var backView: UIView!
+    //videoImageView
     @IBOutlet weak var videoImageView: UIImageView!
-    @IBOutlet weak var videoTitleLabel: UILabel!
-    @IBOutlet weak var channelTitleLabel: UILabel!
-    @IBOutlet weak var channelImageView: UIImageView!
-    @IBOutlet weak var baseBackGroundView: UIView!
     @IBOutlet weak var videoImageViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var videoImageViewLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var videoImageViewTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var videoImageBackView: UIView!
+    
+    //backView
+    @IBOutlet weak var backView: UIView!
+    @IBOutlet weak var backViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var backViewTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var backViewBottomConstraint: NSLayoutConstraint!
+    //describeView
+    @IBOutlet weak var describeView: UIView!
+    @IBOutlet weak var describeViewTopConstraint: NSLayoutConstraint!
+    
+    //ohters
+    @IBOutlet weak var videoTitleLabel: UILabel!
+    @IBOutlet weak var baseBackGroundView: UIView!
+    @IBOutlet weak var channelTitleLabel: UILabel!
+    @IBOutlet weak var channelImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +46,7 @@ class VideoViewController: UIViewController {
     
     
     private func setupViews() {
+        imageViewCenterY = videoImageView.center.y
         channelImageView.layer.cornerRadius = 45 / 2
         
         if let url = URL(string: selectedItem?.snippet.thumbnails.medium.url ?? "") {
@@ -44,21 +62,33 @@ class VideoViewController: UIViewController {
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panVideoImageView))
         videoImageView.addGestureRecognizer(panGesture)
+        
     }
     
+    //videoImageViewのスワイプ移動
     @objc private func panVideoImageView(gesture: UIPanGestureRecognizer) {
         
         guard let imageView = gesture.view else { return }
         let move = gesture.translation(in: imageView)
         
         if gesture.state == .changed {
+            if videoImageMaxY <= move.y {
+                moveToBottom(imageView: imageView as! UIImageView)
+                return
+            }
+            
             imageView.transform = CGAffineTransform(translationX: 0, y: move.y)
+            videoImageBackView.transform = CGAffineTransform(translationX: 0, y: move.y)
             
             // 左右のpadding設定
             let movingConstant = move.y / 30
+            
+            if movingConstant <= 12 {
+                videoImageViewTrailingConstraint.constant = movingConstant
+                videoImageViewLeadingConstraint.constant = movingConstant
+                backViewTopConstraint.constant = -movingConstant
+            }
 
-            videoImageViewTrailingConstraint.constant = movingConstant
-            videoImageViewLeadingConstraint.constant = movingConstant
             
             //imageViewの高さの動き
             //280（最大値）- 70(最小値) = 210
@@ -66,12 +96,24 @@ class VideoViewController: UIViewController {
             let heightRatio = 210 / (parentViewHeight - (parentViewHeight / 6))
             let moveHeight = move.y * heightRatio
             
+            backViewTopConstraint.constant = move.y
             videoImageViewHeightConstraint.constant = 280 - moveHeight
+            describeViewTopConstraint.constant = move.y * 0.8
+            
+            let bottomMoveY = parentViewHeight - videoImageMaxY
+            let bottomMoveRatio = bottomMoveY / videoImageMaxY
+            let bottomMoveConstant = move.y * bottomMoveRatio
+            backViewBottomConstraint.constant = bottomMoveConstant
+            
             
             // imageViewの横幅の動き150(最小値)
             let originalWidth = self.view.frame.width
             let minimusImageViewTrailingConstant = -(originalWidth - (150 + 12))
             let constant = originalWidth - move.y
+            
+            //alpha値の設定
+            let alphaRatio = move.y / parentViewHeight
+            describeView.alpha = 1 - alphaRatio
             
             if minimusImageViewTrailingConstant > constant {
                 videoImageViewTrailingConstraint.constant = minimusImageViewTrailingConstant
@@ -92,7 +134,12 @@ class VideoViewController: UIViewController {
             })
         }
     }
-        
+    
+    private func moveToBottom(imageView: UIImageView) {
+        imageView.transform = CGAffineTransform(translationX: 0, y: videoImageMaxY)
+        backView.transform = CGAffineTransform(translationX: 0, y: videoImageMaxY)
+    }
+    
     private func backToIdentifyAllViews() {
         self.videoImageViewHeightConstraint.constant = 280
         self.videoImageViewLeadingConstraint.constant = 0

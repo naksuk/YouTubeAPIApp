@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,12 +19,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wgz-Wa-AL4">
+                                <rect key="frame" x="0.0" y="44" width="414" height="280"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xsl-h2-wTq">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8jB-0K-O77">
-                                <rect key="frame" x="0.0" y="324" width="414" height="250"/>
+                                <rect key="frame" x="0.0" y="324" width="414" height="572"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pr9-y3-Me7">
                                         <rect key="frame" x="10" y="10" width="394" height="38.5"/>
@@ -91,7 +94,6 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Cm2-xZ-gTV" firstAttribute="top" secondItem="pr9-y3-Me7" secondAttribute="bottom" constant="10" id="6MH-zH-b8S"/>
-                                    <constraint firstAttribute="height" constant="250" id="GRu-AI-TyQ"/>
                                     <constraint firstItem="pr9-y3-Me7" firstAttribute="leading" secondItem="8jB-0K-O77" secondAttribute="leading" constant="10" id="Zjq-OI-rmw"/>
                                     <constraint firstItem="pr9-y3-Me7" firstAttribute="top" secondItem="8jB-0K-O77" secondAttribute="top" constant="10" id="fO1-Ed-tHn"/>
                                     <constraint firstAttribute="trailing" secondItem="pr9-y3-Me7" secondAttribute="trailing" constant="10" id="j2t-8Q-eXy"/>
@@ -110,26 +112,39 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="8jB-0K-O77" firstAttribute="top" secondItem="Aoc-6q-obL" secondAttribute="bottom" id="4zn-kj-hbB"/>
+                            <constraint firstItem="Aoc-6q-obL" firstAttribute="bottom" secondItem="Wgz-Wa-AL4" secondAttribute="bottom" id="7yz-d4-FCr"/>
+                            <constraint firstItem="bLF-8M-QOX" firstAttribute="trailing" secondItem="xvH-YI-tXz" secondAttribute="trailing" id="96R-bH-lXj"/>
                             <constraint firstItem="bLF-8M-QOX" firstAttribute="leading" secondItem="xvH-YI-tXz" secondAttribute="leading" id="B3g-pO-fBC"/>
-                            <constraint firstItem="8jB-0K-O77" firstAttribute="leading" secondItem="xvH-YI-tXz" secondAttribute="leading" id="FLs-Ps-o1r"/>
+                            <constraint firstItem="8jB-0K-O77" firstAttribute="leading" secondItem="Xsl-h2-wTq" secondAttribute="leading" id="FLs-Ps-o1r"/>
                             <constraint firstItem="Xsl-h2-wTq" firstAttribute="top" secondItem="xvH-YI-tXz" secondAttribute="top" id="K2P-jz-nEs"/>
-                            <constraint firstItem="Xsl-h2-wTq" firstAttribute="leading" secondItem="xvH-YI-tXz" secondAttribute="leading" id="QDT-IE-RbA"/>
+                            <constraint firstItem="Xsl-h2-wTq" firstAttribute="leading" secondItem="Aoc-6q-obL" secondAttribute="leading" id="QDT-IE-RbA"/>
                             <constraint firstAttribute="bottom" secondItem="bLF-8M-QOX" secondAttribute="bottom" id="UVZ-Z7-Yer"/>
                             <constraint firstAttribute="bottom" secondItem="Xsl-h2-wTq" secondAttribute="bottom" id="Urj-oF-O9Y"/>
                             <constraint firstItem="xvH-YI-tXz" firstAttribute="trailing" secondItem="8jB-0K-O77" secondAttribute="trailing" id="VUX-AJ-fSl"/>
                             <constraint firstItem="xvH-YI-tXz" firstAttribute="trailing" secondItem="Aoc-6q-obL" secondAttribute="trailing" id="b8Q-cs-GLg"/>
-                            <constraint firstItem="Xsl-h2-wTq" firstAttribute="trailing" secondItem="xvH-YI-tXz" secondAttribute="trailing" id="kej-MW-jdx"/>
+                            <constraint firstItem="Xsl-h2-wTq" firstAttribute="bottom" secondItem="8jB-0K-O77" secondAttribute="bottom" id="ejy-bR-7wl"/>
+                            <constraint firstItem="Wgz-Wa-AL4" firstAttribute="leading" secondItem="Aoc-6q-obL" secondAttribute="leading" id="fUG-Zf-XKC"/>
+                            <constraint firstItem="Wgz-Wa-AL4" firstAttribute="top" secondItem="Aoc-6q-obL" secondAttribute="top" id="fpd-TK-PEk"/>
+                            <constraint firstItem="Xsl-h2-wTq" firstAttribute="trailing" secondItem="dni-Jm-xmD" secondAttribute="trailing" id="kej-MW-jdx"/>
+                            <constraint firstItem="8jB-0K-O77" firstAttribute="trailing" secondItem="Xsl-h2-wTq" secondAttribute="trailing" id="kpm-yb-51u"/>
                             <constraint firstItem="Aoc-6q-obL" firstAttribute="top" secondItem="xvH-YI-tXz" secondAttribute="top" id="mIG-iT-qCG"/>
                             <constraint firstItem="xvH-YI-tXz" firstAttribute="trailing" secondItem="bLF-8M-QOX" secondAttribute="trailing" id="mmS-Ho-YQi"/>
                             <constraint firstItem="bLF-8M-QOX" firstAttribute="top" secondItem="dni-Jm-xmD" secondAttribute="top" id="mpH-Vj-mlI"/>
+                            <constraint firstItem="Wgz-Wa-AL4" firstAttribute="trailing" secondItem="Xsl-h2-wTq" secondAttribute="trailing" id="n2Q-Gc-N47"/>
                             <constraint firstItem="Aoc-6q-obL" firstAttribute="leading" secondItem="xvH-YI-tXz" secondAttribute="leading" id="r1y-gM-Til"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backView" destination="Xsl-h2-wTq" id="Q8P-ar-qdz"/>
+                        <outlet property="backViewBottomConstraint" destination="Urj-oF-O9Y" id="6EK-Ry-Muf"/>
+                        <outlet property="backViewTopConstraint" destination="K2P-jz-nEs" id="xSf-T6-N4k"/>
+                        <outlet property="backViewTrailingConstraint" destination="kej-MW-jdx" id="6IA-cF-SAX"/>
                         <outlet property="baseBackGroundView" destination="bLF-8M-QOX" id="IQY-we-Htk"/>
                         <outlet property="channelImageView" destination="rvK-9k-n5u" id="dhs-oI-kR5"/>
                         <outlet property="channelTitleLabel" destination="ckx-Ad-XbU" id="XKL-Sc-yZe"/>
+                        <outlet property="describeView" destination="8jB-0K-O77" id="Jup-X8-qhh"/>
+                        <outlet property="describeViewTopConstraint" destination="4zn-kj-hbB" id="Kxh-7N-nS3"/>
+                        <outlet property="videoImageBackView" destination="Wgz-Wa-AL4" id="rqS-Lk-Gir"/>
                         <outlet property="videoImageView" destination="Aoc-6q-obL" id="ryP-cm-sqE"/>
                         <outlet property="videoImageViewHeightConstraint" destination="7nz-he-DTd" id="Deu-GZ-1FC"/>
                         <outlet property="videoImageViewLeadingConstraint" destination="r1y-gM-Til" id="HnB-kz-4oL"/>
@@ -139,12 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rcO-uI-USy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-48" y="-202"/>
+            <point key="canvasLocation" x="-49.275362318840585" y="-202.23214285714286"/>
         </scene>
     </scenes>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>
