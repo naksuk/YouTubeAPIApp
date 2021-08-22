@@ -11,6 +11,9 @@ class VideoViewController: UIViewController {
     @IBOutlet weak var channelTitleLabel: UILabel!
     @IBOutlet weak var channelImageView: UIImageView!
     @IBOutlet weak var baseBackGroundView: UIView!
+    @IBOutlet weak var videoImageViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var videoImageViewLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var videoImageViewTrailingConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,14 +53,50 @@ class VideoViewController: UIViewController {
         
         if gesture.state == .changed {
             imageView.transform = CGAffineTransform(translationX: 0, y: move.y)
+            
+            // 左右のpadding設定
+            let movingConstant = move.y / 30
+
+            videoImageViewTrailingConstraint.constant = movingConstant
+            videoImageViewLeadingConstraint.constant = movingConstant
+            
+            //imageViewの高さの動き
+            //280（最大値）- 70(最小値) = 210
+            let parentViewHeight = self.view.frame.height
+            let heightRatio = 210 / (parentViewHeight - (parentViewHeight / 6))
+            let moveHeight = move.y * heightRatio
+            
+            videoImageViewHeightConstraint.constant = 280 - moveHeight
+            
+            // imageViewの横幅の動き150(最小値)
+            let originalWidth = self.view.frame.width
+            let minimusImageViewTrailingConstant = -(originalWidth - (150 + 12))
+            let constant = originalWidth - move.y
+            
+            if minimusImageViewTrailingConstant > constant {
+                videoImageViewTrailingConstraint.constant = minimusImageViewTrailingConstant
+                return
+            }
+            
+            if constant < -12 {
+                videoImageViewTrailingConstraint.constant = -constant
+            }
+            
+            
+            
         } else if gesture.state == .ended {
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: [], animations: {
                 imageView.transform = .identity
+                self.backToIdentifyAllViews()
                 self.view.layoutIfNeeded()
             })
-
-            
         }
+    }
+        
+    private func backToIdentifyAllViews() {
+        self.videoImageViewHeightConstraint.constant = 280
+        self.videoImageViewLeadingConstraint.constant = 0
+        self.videoImageViewTrailingConstraint.constant = 0
     }
     
 }

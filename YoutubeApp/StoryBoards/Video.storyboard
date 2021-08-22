@@ -130,13 +130,16 @@
                         <outlet property="baseBackGroundView" destination="bLF-8M-QOX" id="IQY-we-Htk"/>
                         <outlet property="channelImageView" destination="rvK-9k-n5u" id="dhs-oI-kR5"/>
                         <outlet property="channelTitleLabel" destination="ckx-Ad-XbU" id="XKL-Sc-yZe"/>
-                        <outlet property="videoImageView" destination="Aoc-6q-obL" id="V2i-ov-QDr"/>
+                        <outlet property="videoImageView" destination="Aoc-6q-obL" id="ryP-cm-sqE"/>
+                        <outlet property="videoImageViewHeightConstraint" destination="7nz-he-DTd" id="Deu-GZ-1FC"/>
+                        <outlet property="videoImageViewLeadingConstraint" destination="r1y-gM-Til" id="HnB-kz-4oL"/>
+                        <outlet property="videoImageViewTrailingConstraint" destination="b8Q-cs-GLg" id="KH1-1s-zWA"/>
                         <outlet property="videoTitleLabel" destination="ChY-HY-7RN" id="JDH-Tn-mPd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rcO-uI-USy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-20.289855072463769" y="-53.571428571428569"/>
+            <point key="canvasLocation" x="-48" y="-202"/>
         </scene>
     </scenes>
     <resources>
