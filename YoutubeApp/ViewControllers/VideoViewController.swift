@@ -10,6 +10,10 @@ class VideoViewController: UIViewController {
         return view.frame.maxY - ecloudValue
     }
     
+    var minimusImageViewTrailingConstant: CGFloat {
+        -(view.frame.width - (150 + 12))
+    }
+    
     //videoImageView
     @IBOutlet weak var videoImageView: UIImageView!
     @IBOutlet weak var videoImageViewHeightConstraint: NSLayoutConstraint!
@@ -46,6 +50,8 @@ class VideoViewController: UIViewController {
     
     
     private func setupViews() {
+        self.view.bringSubviewToFront(videoImageView)
+        
         imageViewCenterY = videoImageView.center.y
         channelImageView.layer.cornerRadius = 45 / 2
         
@@ -72,6 +78,7 @@ class VideoViewController: UIViewController {
         let move = gesture.translation(in: imageView)
         
         if gesture.state == .changed {
+            
             if videoImageMaxY <= move.y {
                 moveToBottom(imageView: imageView as! UIImageView)
                 return
@@ -88,7 +95,7 @@ class VideoViewController: UIViewController {
                 videoImageViewLeadingConstraint.constant = movingConstant
                 backViewTopConstraint.constant = -movingConstant
             }
-
+            
             
             //imageViewの高さの動き
             //280（最大値）- 70(最小値) = 210
@@ -105,15 +112,14 @@ class VideoViewController: UIViewController {
             let bottomMoveConstant = move.y * bottomMoveRatio
             backViewBottomConstraint.constant = bottomMoveConstant
             
-            
             // imageViewの横幅の動き150(最小値)
             let originalWidth = self.view.frame.width
-            let minimusImageViewTrailingConstant = -(originalWidth - (150 + 12))
             let constant = originalWidth - move.y
             
             //alpha値の設定
-            let alphaRatio = move.y / parentViewHeight
+            let alphaRatio = move.y / (parentViewHeight / 2)
             describeView.alpha = 1 - alphaRatio
+            baseBackGroundView.alpha = 1 - alphaRatio
             
             if minimusImageViewTrailingConstant > constant {
                 videoImageViewTrailingConstraint.constant = minimusImageViewTrailingConstant
@@ -127,23 +133,56 @@ class VideoViewController: UIViewController {
             
             
         } else if gesture.state == .ended {
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: [], animations: {
-                imageView.transform = .identity
-                self.backToIdentifyAllViews()
-                self.view.layoutIfNeeded()
-            })
+            
+            if move.y < self.view.frame.height / 3 {
+                
+                UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: [], animations: {
+                    imageView.transform = .identity
+                    self.backToIdentifyAllViews(imageView: imageView as! UIImageView)
+                })
+            } else {
+                UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.8, options: []) {
+                    self.moveToBottom(imageView: imageView as! UIImageView)
+                }
+            }
+            
+            
         }
     }
     
     private func moveToBottom(imageView: UIImageView) {
+        //imageViewの設定
         imageView.transform = CGAffineTransform(translationX: 0, y: videoImageMaxY)
-        backView.transform = CGAffineTransform(translationX: 0, y: videoImageMaxY)
+        videoImageViewTrailingConstraint.constant = minimusImageViewTrailingConstant
+        videoImageViewHeightConstraint.constant = 70
+        
+        videoImageBackView.transform = CGAffineTransform(translationX: 0, y: videoImageMaxY)
+        backView.alpha = 0
+        describeView.alpha = 0
+        self.view.layoutIfNeeded()
     }
     
-    private func backToIdentifyAllViews() {
-        self.videoImageViewHeightConstraint.constant = 280
-        self.videoImageViewLeadingConstraint.constant = 0
-        self.videoImageViewTrailingConstraint.constant = 0
+    private func backToIdentifyAllViews(imageView: UIImageView) {
+        //imageViewの設定
+        imageView.transform = .identity
+        videoImageViewHeightConstraint.constant = 280
+        videoImageViewLeadingConstraint.constant = 0
+        videoImageViewTrailingConstraint.constant = 0
+        
+        //backViewの設定
+        backViewTrailingConstraint.constant = 0
+        backViewTopConstraint.constant = 0
+        backViewBottomConstraint.constant = 0
+        backView.alpha = 0
+        
+        //describeViewの設定
+        describeViewTopConstraint.constant = 0
+        describeView.alpha = 1
+        backView.alpha = 0
+        baseBackGroundView.alpha = 1
+        
+        self.view.layoutIfNeeded()
+        
     }
     
 }
