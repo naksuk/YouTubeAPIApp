@@ -43,13 +43,13 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Knp-kn-AeO">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="70"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="2sO-L8-dlR"/>
                                             <constraint firstAttribute="width" constant="150" id="IVe-qc-C5X"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Knp-kn-AeO" secondAttribute="bottom" id="0Sc-lb-ylt"/>
                                     <constraint firstItem="Knp-kn-AeO" firstAttribute="top" secondItem="8oP-qf-yVN" secondAttribute="top" id="8sm-Ec-mmb"/>
                                     <constraint firstItem="Knp-kn-AeO" firstAttribute="leading" secondItem="8oP-qf-yVN" secondAttribute="leading" id="a4V-EO-y4T"/>
                                     <constraint firstAttribute="height" constant="70" id="a6I-7r-7eo"/>
@@ -129,8 +129,14 @@
                     <tabBarItem key="tabBarItem" title="Item" id="GEo-Co-usE"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="bottomVideoImageHeight" destination="2sO-L8-dlR" id="auI-ch-DOT"/>
                         <outlet property="bottomVideoImageView" destination="Knp-kn-AeO" id="HBt-i5-8LI"/>
+                        <outlet property="bottomVideoImageWidth" destination="IVe-qc-C5X" id="6rF-pS-6bQ"/>
                         <outlet property="bottomVideoView" destination="8oP-qf-yVN" id="J4O-WK-2rj"/>
+                        <outlet property="bottomVideoViewBottom" destination="s0S-es-8xA" id="yWa-cO-gtP"/>
+                        <outlet property="bottomVideoViewHeight" destination="a6I-7r-7eo" id="hOV-yv-exC"/>
+                        <outlet property="bottomVideoViewLeading" destination="bUm-sw-Qv7" id="scW-wR-0mL"/>
+                        <outlet property="bottomVideoViewTrailing" destination="NaK-ow-lb9" id="MxX-dg-GgD"/>
                         <outlet property="headerHeightConstraint" destination="4LU-6Y-LN7" id="aO5-Xd-mg4"/>
                         <outlet property="headerTopConstraint" destination="guh-te-yiT" id="ABd-IE-A1C"/>
                         <outlet property="headerView" destination="XLm-MH-qL2" id="jRC-lK-fCX"/>
