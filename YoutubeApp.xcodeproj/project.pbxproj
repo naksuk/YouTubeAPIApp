@@ -11,8 +11,8 @@
 		024956BC26C63BC300B981D5 /* AttentionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024956BB26C63BC300B981D5 /* AttentionCollectionViewCell.swift */; };
 		024956C026C63C7A00B981D5 /* AttentionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024956BF26C63C7A00B981D5 /* AttentionCollectionViewCell.xib */; };
 		024956C226C8E3DD00B981D5 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024956C126C8E3DD00B981D5 /* VideoViewController.swift */; };
-		024956C426C8E46700B981D5 /* Video.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 024956C326C8E46700B981D5 /* Video.storyboard */; };
 		0249571126DB360700B981D5 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249571026DB360700B981D5 /* SearchViewController.swift */; };
+		0249571326DB542700B981D5 /* Video.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0249571226DB542700B981D5 /* Video.storyboard */; };
 		029516A026B2D26D0064FFC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295169F26B2D26D0064FFC0 /* AppDelegate.swift */; };
 		029516A226B2D26D0064FFC0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029516A126B2D26D0064FFC0 /* SceneDelegate.swift */; };
 		029516A426B2D26D0064FFC0 /* VideoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029516A326B2D26D0064FFC0 /* VideoListViewController.swift */; };
@@ -39,8 +39,8 @@
 		024956BB26C63BC300B981D5 /* AttentionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttentionCollectionViewCell.swift; sourceTree = "<group>"; };
 		024956BF26C63C7A00B981D5 /* AttentionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttentionCollectionViewCell.xib; sourceTree = "<group>"; };
 		024956C126C8E3DD00B981D5 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
-		024956C326C8E46700B981D5 /* Video.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Video.storyboard; sourceTree = "<group>"; };
 		0249571026DB360700B981D5 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		0249571226DB542700B981D5 /* Video.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Video.storyboard; sourceTree = "<group>"; };
 		0295169C26B2D26D0064FFC0 /* YoutubeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoutubeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0295169F26B2D26D0064FFC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		029516A126B2D26D0064FFC0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				024956C526C8E46D00B981D5 /* Tab */,
-				024956C326C8E46700B981D5 /* Video.storyboard */,
+				0249571226DB542700B981D5 /* Video.storyboard */,
 			);
 			path = StoryBoards;
 			sourceTree = "<group>";
@@ -270,11 +270,11 @@
 			files = (
 				029516AC26B2D26F0064FFC0 /* LaunchScreen.storyboard in Resources */,
 				029516D026B9F65E0064FFC0 /* Channel.storyboard in Resources */,
+				0249571326DB542700B981D5 /* Video.storyboard in Resources */,
 				029516B826B438470064FFC0 /* VideoListCell.xib in Resources */,
 				029516A926B2D26F0064FFC0 /* Assets.xcassets in Resources */,
 				029516D426B9F6810064FFC0 /* Library.storyboard in Resources */,
 				029516C226B8DE570064FFC0 /* BaseTabBar.storyboard in Resources */,
-				024956C426C8E46700B981D5 /* Video.storyboard in Resources */,
 				024956C026C63C7A00B981D5 /* AttentionCollectionViewCell.xib in Resources */,
 				029516CE26B9F62B0064FFC0 /* Search.storyboard in Resources */,
 				029516A726B2D26D0064FFC0 /* VideoList.storyboard in Resources */,

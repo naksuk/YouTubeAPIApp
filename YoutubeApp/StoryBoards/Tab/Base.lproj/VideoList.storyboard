@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -103,7 +104,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XLm-MH-qL2">
                                 <rect key="frame" x="0.0" y="44" width="414" height="60"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="youtube_icon" translatesAutoresizingMaskIntoConstraints="NO" id="DqL-Jb-JNe">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="YouTube_icon" translatesAutoresizingMaskIntoConstraints="NO" id="DqL-Jb-JNe">
                                         <rect key="frame" x="10" y="5" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="EYd-iD-gI9"/>
@@ -116,7 +117,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="task_sns" translatesAutoresizingMaskIntoConstraints="NO" id="tDf-Vf-hvL">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kylie_irving" translatesAutoresizingMaskIntoConstraints="NO" id="tDf-Vf-hvL">
                                         <rect key="frame" x="364" y="10" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="eCH-Ut-U2t"/>
@@ -129,7 +130,7 @@
                                             <constraint firstAttribute="width" secondItem="OR6-aj-hea" secondAttribute="height" multiplier="1:1" id="j2b-0q-Y40"/>
                                             <constraint firstAttribute="width" constant="25" id="kfg-PI-47p"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="search-icon"/>
+                                        <state key="normal" title="Button" image="search"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgh-fQ-81j">
                                         <rect key="frame" x="308" y="17.5" width="25" height="25"/>
@@ -137,7 +138,7 @@
                                             <constraint firstAttribute="width" secondItem="zgh-fQ-81j" secondAttribute="height" multiplier="1:1" id="VT6-hG-x7l"/>
                                             <constraint firstAttribute="width" constant="25" id="wfj-kX-Yu4"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="movie_icon"/>
+                                        <state key="normal" title="Button" image="movie-icon"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -200,10 +201,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="movie_icon" width="225" height="225"/>
-        <image name="search-icon" width="640" height="640"/>
-        <image name="task_sns" width="200" height="200"/>
-        <image name="youtube_icon" width="512" height="512"/>
+        <image name="YouTube_icon" width="256" height="256"/>
+        <image name="kylie_irving" width="678" height="452"/>
+        <image name="movie-icon" width="256" height="256"/>
+        <image name="search" width="256" height="256"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
