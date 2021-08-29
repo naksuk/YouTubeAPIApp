@@ -200,6 +200,8 @@ class VideoViewController: UIViewController {
     private func backToIdentifyAllViews(imageView: UIImageView) {
         //imageViewの設定
         imageView.transform = .identity
+        videoImageBackView.transform = .identity
+        
         videoImageViewHeightConstraint.constant = 280
         videoImageViewLeadingConstraint.constant = 0
         videoImageViewTrailingConstraint.constant = 0

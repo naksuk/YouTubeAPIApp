@@ -79,6 +79,17 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let prevController = self.presentingViewController as! BaseTabBarController
+        let videoList = prevController.viewControllers?[0] as! VideoListViewController
+        
+        videoList.selectedItem = video?.items[indexPath.row]
+        
+        dismiss(animated: true) {
+            NotificationCenter.default.post(name: .init("searchedItem"), object: nil)
+        }
+    }
+    
 }
 
 
