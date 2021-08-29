@@ -44,7 +44,7 @@ class VideoListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        //fetchYoutubeSearchInfo()
+        fetchYoutubeSearchInfo()
         setupGestureRecognizer()
         setupNotification()
         

@@ -114,7 +114,7 @@ class VideoViewController: UIViewController {
         if movingConstant <= 12 {
             videoImageViewTrailingConstraint.constant = movingConstant
             videoImageViewLeadingConstraint.constant = movingConstant
-            backViewTopConstraint.constant = -movingConstant
+            backViewTopConstraint.constant = movingConstant
         }
         
     }
@@ -152,7 +152,7 @@ class VideoViewController: UIViewController {
         }
         
         if constant < -12 {
-            videoImageViewTrailingConstraint.constant = -constant
+            videoImageViewTrailingConstraint.constant = constant
         }
     }
     
