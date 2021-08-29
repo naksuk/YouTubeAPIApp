@@ -9,6 +9,9 @@ class VideoListViewController: UIViewController {
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var headerTopConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var bottomVideoView: UIView!
+    @IBOutlet weak var bottomVideoImageView: UIImageView!
+    
     private var prevContentOffset: CGPoint = .init(x: 0, y: 0)
     private let headerMoveHeight: CGFloat = 6
     
@@ -20,8 +23,9 @@ class VideoListViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         fetchYoutubeSearchInfo()
+        NotificationCenter.default.addObserver(self, selector: #selector(showThumbnailImage), name: .init("thumbnailImage"), object: nil)
+        
     }
-    
     private func fetchYoutubeSearchInfo() {
         let params = ["q": "mario"]
         API.shared.request(path: .search, params: params, type: Video.self) { (video) in
@@ -32,12 +36,22 @@ class VideoListViewController: UIViewController {
         
     }
     
+    @objc private func showThumbnailImage(notification: NSNotification) {
+        
+        guard let userInfo = notification.userInfo as? [String: UIImage] else { return }
+        let image = userInfo["image"]
+        
+        bottomVideoView.isHidden = false
+        bottomVideoImageView.image = image
+    }
+    
     private func setupViews() {
         videoListCollectionView.delegate = self
         videoListCollectionView.dataSource = self
         videoListCollectionView.register(UINib(nibName: "VideoListCell", bundle: nil), forCellWithReuseIdentifier: cellId)
         videoListCollectionView.register(AttentionCell.self, forCellWithReuseIdentifier: attentionCellId)
         profileImageView.layer.cornerRadius = 20
+        bottomVideoView.isHidden = true
     }
     
     private func fetchyoutubeChannelInfo(id: String) {
@@ -49,7 +63,6 @@ class VideoListViewController: UIViewController {
             self.videoListCollectionView.reloadData()
         }
     }
-    
     
     
     private func headerViewEndAnimation() {
@@ -157,9 +170,14 @@ extension VideoListViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let videoViewController = UIStoryboard(name: "Video", bundle: nil).instantiateViewController(identifier: "VideoViewController") as VideoViewController
         
-        videoViewController.selectedItem = indexPath.row > 2 ? videoItems[indexPath.row - 1] : videoItems[indexPath.row]
+        if videoItems.count == 0 {
+            videoViewController.selectedItem = nil
+        } else {
+            videoViewController.selectedItem = indexPath.row > 2 ? videoItems[indexPath.row - 1] : videoItems[indexPath.row]
+        }
         
-        self.present(videoViewController, animated: true, completion: nil)
+        bottomVideoView.isHidden = true
+       self.present(videoViewController, animated: true, completion: nil)
     }
     
     
