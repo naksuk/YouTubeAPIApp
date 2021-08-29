@@ -122,7 +122,7 @@ class VideoViewController: UIViewController {
     private func adjustHeightChange(move: CGPoint) {
         //280（最大値）- 70(最小値) = 210
         let parentViewHeight = self.view.frame.height
-        let heightRatio = 210 / (parentViewHeight - (parentViewHeight / 6))
+        let heightRatio = 210 / videoImageMaxY
         let moveHeight = move.y * heightRatio
         
         backViewTopConstraint.constant = move.y
@@ -174,7 +174,7 @@ class VideoViewController: UIViewController {
                     self.videoImageBackView.isHidden = true
                     
                     let image = self.videoImageView.image
-                    let userInfo: [String: UIImage?] = ["image": image]
+                    let userInfo: [String: Any] = ["image": image, "videoImageMinY": self.videoImageView.frame.minY]
                     NotificationCenter.default.post(name: .init("thumbnailImage"), object: nil, userInfo: userInfo as [AnyHashable : Any])
                 } completion: { _ in
                     self.dismiss(animated: false, completion: nil)
@@ -189,6 +189,7 @@ class VideoViewController: UIViewController {
         imageView.transform = CGAffineTransform(translationX: 0, y: videoImageMaxY)
         videoImageViewTrailingConstraint.constant = minimusImageViewTrailingConstant
         videoImageViewHeightConstraint.constant = 70
+        videoImageViewLeadingConstraint.constant = 12
         
         videoImageBackView.transform = CGAffineTransform(translationX: 0, y: videoImageMaxY)
         backView.alpha = 0

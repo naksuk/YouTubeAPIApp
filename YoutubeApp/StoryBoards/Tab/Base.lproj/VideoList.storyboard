@@ -47,12 +47,57 @@
                                             <constraint firstAttribute="width" constant="150" id="IVe-qc-C5X"/>
                                         </constraints>
                                     </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eew-km-3XS">
+                                        <rect key="frame" x="150" y="0.0" width="240" height="70"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="550-hH-XcA">
+                                                <rect key="frame" x="194" y="0.0" width="46" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="46" id="bLj-dc-9xh"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="40"/>
+                                                <state key="normal" title="×">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="dgE-gS-cOV">
+                                                <rect key="frame" x="5" y="5" width="184" height="60"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ビデオのタイトル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GYD-xh-dU1">
+                                                        <rect key="frame" x="0.0" y="0.0" width="184" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ビデオの説明" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bjd-S9-Hdq">
+                                                        <rect key="frame" x="0.0" y="30" width="184" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="550-hH-XcA" secondAttribute="trailing" id="69W-B9-u5l"/>
+                                            <constraint firstItem="dgE-gS-cOV" firstAttribute="leading" secondItem="Eew-km-3XS" secondAttribute="leading" constant="5" id="LvI-g2-OZL"/>
+                                            <constraint firstAttribute="bottom" secondItem="550-hH-XcA" secondAttribute="bottom" id="QuO-L8-v3d"/>
+                                            <constraint firstItem="dgE-gS-cOV" firstAttribute="top" secondItem="Eew-km-3XS" secondAttribute="top" constant="5" id="cce-LV-r8U"/>
+                                            <constraint firstItem="550-hH-XcA" firstAttribute="leading" secondItem="dgE-gS-cOV" secondAttribute="trailing" constant="5" id="eos-7D-2aE"/>
+                                            <constraint firstItem="550-hH-XcA" firstAttribute="top" secondItem="Eew-km-3XS" secondAttribute="top" id="scT-1g-WEq"/>
+                                            <constraint firstAttribute="bottom" secondItem="dgE-gS-cOV" secondAttribute="bottom" constant="5" id="t5e-f1-Xfl"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="Eew-km-3XS" firstAttribute="top" secondItem="8oP-qf-yVN" secondAttribute="top" id="0Sx-Jx-spz"/>
                                     <constraint firstItem="Knp-kn-AeO" firstAttribute="top" secondItem="8oP-qf-yVN" secondAttribute="top" id="8sm-Ec-mmb"/>
+                                    <constraint firstAttribute="trailing" secondItem="Eew-km-3XS" secondAttribute="trailing" id="Z2x-yo-8MS"/>
                                     <constraint firstItem="Knp-kn-AeO" firstAttribute="leading" secondItem="8oP-qf-yVN" secondAttribute="leading" id="a4V-EO-y4T"/>
                                     <constraint firstAttribute="height" constant="70" id="a6I-7r-7eo"/>
+                                    <constraint firstAttribute="bottom" secondItem="Eew-km-3XS" secondAttribute="bottom" id="pEI-MO-ppJ"/>
+                                    <constraint firstItem="Eew-km-3XS" firstAttribute="leading" secondItem="Knp-kn-AeO" secondAttribute="trailing" id="ukn-zS-9z9"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XLm-MH-qL2">
@@ -66,7 +111,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Youtube" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVZ-tg-qTs">
-                                        <rect key="frame" x="63" y="19.5" width="68" height="21"/>
+                                        <rect key="frame" x="63" y="20" width="68" height="20.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -129,9 +174,13 @@
                     <tabBarItem key="tabBarItem" title="Item" id="GEo-Co-usE"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="bottomCloseButton" destination="550-hH-XcA" id="7Bl-BN-T1H"/>
+                        <outlet property="bottomSubscribeView" destination="Eew-km-3XS" id="WJj-Ih-kMx"/>
+                        <outlet property="bottomVideoDescribeLabel" destination="Bjd-S9-Hdq" id="WA5-6w-QcQ"/>
                         <outlet property="bottomVideoImageHeight" destination="2sO-L8-dlR" id="auI-ch-DOT"/>
                         <outlet property="bottomVideoImageView" destination="Knp-kn-AeO" id="HBt-i5-8LI"/>
                         <outlet property="bottomVideoImageWidth" destination="IVe-qc-C5X" id="6rF-pS-6bQ"/>
+                        <outlet property="bottomVideoTitleLabel" destination="GYD-xh-dU1" id="Nvy-le-f0y"/>
                         <outlet property="bottomVideoView" destination="8oP-qf-yVN" id="J4O-WK-2rj"/>
                         <outlet property="bottomVideoViewBottom" destination="s0S-es-8xA" id="yWa-cO-gtP"/>
                         <outlet property="bottomVideoViewHeight" destination="a6I-7r-7eo" id="hOV-yv-exC"/>
@@ -141,6 +190,7 @@
                         <outlet property="headerTopConstraint" destination="guh-te-yiT" id="ABd-IE-A1C"/>
                         <outlet property="headerView" destination="XLm-MH-qL2" id="jRC-lK-fCX"/>
                         <outlet property="profileImageView" destination="tDf-Vf-hvL" id="Mo9-j4-PbZ"/>
+                        <outlet property="searchButton" destination="OR6-aj-hea" id="Y8F-xZ-ZZl"/>
                         <outlet property="videoListCollectionView" destination="Oa5-7u-aIt" id="yCJ-Nj-xja"/>
                     </connections>
                 </viewController>
